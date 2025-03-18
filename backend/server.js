@@ -1,6 +1,8 @@
 const express = require("express");
 const connectDB = require("./config/db"); // Import DB connection
 const cors = require("cors");
+const authMiddleware = require("./middleware/authMiddleware");
+
 require("dotenv").config();
 
 const app = express();
@@ -19,6 +21,15 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.get("/", (req, res) => {
   res.send("Healthcare API is running...");
 });
+
+// Protected Route: Only accessible if logged in
+app.get("/api/profile", authMiddleware, (req, res) => {
+    res.json({
+      msg: "Welcome to your profile",
+      user: req.user, // Contains userId and role from the token
+    });
+  });
+  
 
 // Start Server
 const PORT = process.env.PORT || 5000;
