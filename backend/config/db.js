@@ -7,12 +7,11 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log("✅ MongoDB Connected Successfully");
+    console.log("✅ MongoDB Atlas Connected Successfully");
   } catch (error) {
-    console.error("❌ MongoDB Connection Failed:", error);
+    console.error("❌ MongoDB Atlas Connection Failed:", error);
     process.exit(1);
   }
 };
 
-// Correct way to export
 module.exports = connectDB;

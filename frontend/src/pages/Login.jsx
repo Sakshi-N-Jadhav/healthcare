@@ -9,12 +9,12 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/login", {
+      const response = await axios.post("http://localhost:5000/api/auth/login", {
         email,
         password,
       });
-      alert("Login Successful!");
       localStorage.setItem("token", response.data.token);
+      alert("Login Successful!");
     } catch (error) {
       alert("Invalid Credentials");
     }
