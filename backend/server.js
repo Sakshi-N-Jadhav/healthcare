@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require("./config/db"); // Import DB connection
 const cors = require("cors");
 const authMiddleware = require("./middleware/authMiddleware");
+const User = require("./models/User");
 
 require("dotenv").config();
 
@@ -34,6 +35,15 @@ app.get("/api/profile", authMiddleware, (req, res) => {
     });
   });
   
+  //The frontend can fetch user details from /api/user.
+  app.get("/api/user", authMiddleware, async (req, res) => {
+    try {
+      const user = await User.findById(req.user.userId).select("-password");
+      res.json(user);
+    } catch (error) {
+      res.status(500).send("Server error");
+    }
+  });
 
 
 
