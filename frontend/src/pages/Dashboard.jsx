@@ -1,5 +1,6 @@
-import { Container, Typography, Button } from "@mui/material";
+// Now, when a user clicks "Logout", the JWT token is removed, and they are redirected to the login page.
 import { useNavigate } from "react-router-dom";
+import { Button, Container, Typography } from "@mui/material";
 
 function Dashboard() {
   const navigate = useNavigate();

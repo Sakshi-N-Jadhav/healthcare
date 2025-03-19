@@ -1,1 +1,1 @@
-# healthcare
+# healthcarenpm create vite@latest my-react-app -- --template reactnpm create vite@latest my-react-app -- --template react

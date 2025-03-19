@@ -17,6 +17,10 @@ app.use(cors()); // Enables cross-origin requests
 // ✅ Register Authentication Routes Here
 app.use("/api/auth", require("./routes/authRoutes"));
 
+//✅ Now, patients can book appointments via API.
+app.use("/api/appointments", require("./routes/appointmentRoutes"));
+
+
 // Default route
 app.get("/", (req, res) => {
   res.send("Healthcare API is running...");
@@ -30,6 +34,8 @@ app.get("/api/profile", authMiddleware, (req, res) => {
     });
   });
   
+
+
 
 // Start Server
 const PORT = process.env.PORT || 5000;
