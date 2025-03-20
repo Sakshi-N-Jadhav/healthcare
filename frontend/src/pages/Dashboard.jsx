@@ -57,7 +57,10 @@ function Dashboard() {
 
   return (
     <Container>
-      <Typography variant="h4">Dashboard</Typography>
+      <Typography variant="h4">Welcome to the Dashboard</Typography>
+      <Button variant="contained" color="primary" onClick={() => navigate("/book-appointment")}>
+        Book Appointment
+      </Button>
       {user && (
         <>
           <Typography variant="h6">Welcome, {user.name} ({user.role})</Typography>

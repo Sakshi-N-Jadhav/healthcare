@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
+import BookAppointment from "./pages/BookAppointment";
+
 import ProtectedRoute from "./components/ProtectedRoute";
 
 
@@ -18,6 +20,8 @@ function App() {
 
 
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/book-appointment" element={<BookAppointment />} />
+
         </Route>
       </Routes>
     </Router>
