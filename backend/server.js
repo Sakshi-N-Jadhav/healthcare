@@ -21,6 +21,10 @@ app.use("/api/auth", require("./routes/authRoutes"));
 // patients can book appointments via API.
 app.use("/api/appointments", require("./routes/appointmentRoutes"));
 
+//the doctors list is accessible in the backend!
+app.use("/api/users", require("./routes/userRoutes"));
+
+
 
 // Default route
 app.get("/", (req, res) => {
