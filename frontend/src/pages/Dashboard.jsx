@@ -57,8 +57,7 @@ function Dashboard() {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>Dashboard</Typography>
-
+      <Typography variant="h4">Dashboard</Typography>
       {user && (
         <>
           <Typography variant="h6">Welcome, {user.name} ({user.role})</Typography>
@@ -66,38 +65,28 @@ function Dashboard() {
         </>
       )}
 
-      <Typography variant="h5" gutterBottom>Appointments</Typography>
-      {appointments.length > 0 ? (
-        <List>
-          {appointments.map((appt) => (
-            <ListItem key={appt._id} divider>
-              <ListItemText
-                primary={
-                  user.role === "patient"
-                    ? `Doctor: ${appt.doctorId.name} | Date: ${new Date(appt.date).toLocaleString()}`
-                    : `Patient: ${appt.patientId.name} | Date: ${new Date(appt.date).toLocaleString()} | Status: ${appt.status}`
-                }
-              />
-              {user.role === "doctor" && appt.status === "Pending" && (
-                <>
-                  <Button onClick={() => handleUpdateStatus(appt._id, "Confirmed")} color="primary">
-                    Approve
-                  </Button>
-                  <Button onClick={() => handleUpdateStatus(appt._id, "Cancelled")} color="error">
-                    Reject
-                  </Button>
-                </>
-              )}
-            </ListItem>
-          ))}
-        </List>
-      ) : (
-        <Typography>No appointments found.</Typography>
-      )}
+      <Typography variant="h5">Appointments</Typography>
+      <List>
+        {appointments.map((appt) => (
+          <ListItem key={appt._id}>
+            <ListItemText 
+              primary={
+                user.role === "patient"
+                  ? `Doctor: ${appt.doctorId.name} | Date: ${new Date(appt.date).toLocaleString()}`
+                  : `Patient: ${appt.patientId.name} | Date: ${new Date(appt.date).toLocaleString()} | Status: ${appt.status}`
+              }
+            />
+            {user.role === "doctor" && appt.status === "Pending" && (
+              <>
+                <Button onClick={() => handleUpdateStatus(appt._id, "Confirmed")} color="primary">Approve</Button>
+                <Button onClick={() => handleUpdateStatus(appt._id, "Cancelled")} color="secondary">Reject</Button>
+              </>
+            )}
+          </ListItem>
+        ))}
+      </List>
 
-      <Button onClick={handleLogout} variant="contained" color="secondary" style={{ marginTop: "20px" }}>
-        Logout
-      </Button>
+      <Button onClick={handleLogout} variant="contained" color="secondary">Logout</Button>
     </Container>
   );
 }

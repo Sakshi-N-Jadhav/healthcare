@@ -15,10 +15,10 @@ connectDB();
 app.use(express.json()); // Enables JSON parsing
 app.use(cors()); // Enables cross-origin requests
 
-// ✅ Register Authentication Routes Here
+//  Register Authentication Routes Here
 app.use("/api/auth", require("./routes/authRoutes"));
 
-//✅ Now, patients can book appointments via API.
+// patients can book appointments via API.
 app.use("/api/appointments", require("./routes/appointmentRoutes"));
 
 
