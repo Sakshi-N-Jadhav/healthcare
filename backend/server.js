@@ -26,6 +26,8 @@ app.use("/api/users", require("./routes/userRoutes"));
 
 
 
+
+
 // Default route
 app.get("/", (req, res) => {
   res.send("Healthcare API is running...");

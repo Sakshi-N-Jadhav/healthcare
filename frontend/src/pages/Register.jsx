@@ -3,8 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Container, Typography } from "@mui/material";
 
-function Login() {
-  const [form, setForm] = useState({ email: "", password: "" });
+function Register() {
+  const [form, setForm] = useState({ name: "", email: "", password: "" });
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -14,32 +14,31 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
-
-      // ✅ Store user data in localStorage
-      localStorage.setItem("user", JSON.stringify(res.data.user));
-
-      alert("Login successful!");
-      
-      // ✅ Redirect based on role
-      if (res.data.user.role === "doctor") {
-        navigate("/doctor-dashboard");
-      } else {
-        navigate("/dashboard");
-      }
-
+      await axios.post("http://localhost:5000/api/auth/register", form);
+      alert("Registration successful! You can now log in.");
+      navigate("/login");
     } catch (err) {
-      alert(err.response?.data?.msg || "Login failed.");
+      alert(err.response?.data?.msg || "Registration failed.");
     }
   };
 
   return (
     <Container maxWidth="sm">
-      <Typography variant="h4" gutterBottom>Login</Typography>
+      <Typography variant="h4" gutterBottom>Register</Typography>
       <form onSubmit={handleSubmit}>
+        <TextField
+          label="Name"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+          required
+        />
         <TextField
           label="Email"
           name="email"
+          type="email"
           value={form.email}
           onChange={handleChange}
           fullWidth
@@ -57,11 +56,11 @@ function Login() {
           required
         />
         <Button type="submit" variant="contained" color="primary" fullWidth>
-          Login
+          Register
         </Button>
       </form>
     </Container>
   );
 }
 
-export default Login;
+export default Register;
