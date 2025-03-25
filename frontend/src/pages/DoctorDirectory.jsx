@@ -10,6 +10,8 @@ import {
   Button
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material"; // profile picture of doctor
+
 
 function DoctorDirectory() {
   const [doctors, setDoctors] = useState([]);
@@ -32,11 +34,17 @@ function DoctorDirectory() {
         {doctors.map((doc) => (
           <Grid item xs={12} md={6} key={doc._id}>
             <Card>
-              <CardContent>
+            <CardContent sx={{ textAlign: "center" }}>
+            <Avatar
+            src={doc.profileImage}
+            alt={doc.name}
+            sx={{ width: 64, height: 64, margin: "0 auto", mb: 1 }}
+            />
                 <Typography variant="h6">{doc.name}</Typography>
                 <Typography variant="body2" color="textSecondary">{doc.email}</Typography>
                 <Typography>Specialization: {doc.specialization || "N/A"}</Typography>
                 <Typography>Experience: {doc.experience || "N/A"}</Typography>
+                
                   {/* Adding Buttons Below */}
                 <Box mt={2} display="flex" gap={2}>
                   <Button
