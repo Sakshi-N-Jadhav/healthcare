@@ -19,14 +19,20 @@ router.get("/doctors", async (req, res) => {
 // Get appointments by patient ID
 router.get("/appointments/:patientId", async (req, res) => {
   try {
-    const appointments = await Appointment.find({ patientId: req.params.patientId })
-      .sort({ date: -1 }) // 🔥 Newest first
-      .populate("doctorId", "name email"); // Include doctor info
+    const now = new Date();
+    const appointments = await Appointment.find({
+      patientId: req.params.patientId,
+      date: { $gte: now }, // Only future dates
+    })
+      .sort({ date: 1 }) // Oldest upcoming first
+      .populate("doctorId", "name email");
+
     res.json(appointments);
   } catch (err) {
     res.status(500).send("Error fetching appointments");
   }
 });
+
 
 
 module.exports = router;

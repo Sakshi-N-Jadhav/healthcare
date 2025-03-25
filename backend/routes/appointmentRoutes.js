@@ -28,4 +28,30 @@ router.post("/book", async (req, res) => {
   }
 });
 
+// Cancel Appointment
+router.delete("/:appointmentId", async (req, res) => {
+  try {
+    await Appointment.findByIdAndDelete(req.params.appointmentId);
+    res.json({ msg: "Appointment cancelled" });
+  } catch (err) {
+    res.status(500).send("Cancel failed");
+  }
+});
+
+//  Reschedule Appointment
+router.put("/:appointmentId", async (req, res) => {
+  const { newDate } = req.body;
+  try {
+    const updated = await Appointment.findByIdAndUpdate(
+      req.params.appointmentId,
+      { date: newDate, status: "Pending" },
+      { new: true }
+    );
+    res.json({ msg: "Appointment rescheduled", updated });
+  } catch (err) {
+    res.status(500).send("Reschedule failed");
+  }
+});
+
+
 module.exports = router;
