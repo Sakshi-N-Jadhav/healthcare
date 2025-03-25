@@ -33,7 +33,22 @@ router.get("/appointments/:patientId", async (req, res) => {
   }
 });
 
+// GET a specific doctor by ID
+router.get("/doctors/:id", async (req, res) => {
+  try {
+    const doctor = await User.findById(req.params.id).select("name email specialization experience role");
 
+    // Ensure the user is actually a doctor
+    if (!doctor || doctor.role !== "doctor") {
+      return res.status(404).json({ msg: "Doctor not found" });
+    }
+
+    res.json(doctor);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error fetching doctor details");
+  }
+});
 
 
 module.exports = router;

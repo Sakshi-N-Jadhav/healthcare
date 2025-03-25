@@ -37,6 +37,24 @@ function DoctorDirectory() {
                 <Typography variant="body2" color="textSecondary">{doc.email}</Typography>
                 <Typography>Specialization: {doc.specialization || "N/A"}</Typography>
                 <Typography>Experience: {doc.experience || "N/A"}</Typography>
+                  {/* Adding Buttons Below */}
+                <Box mt={2} display="flex" gap={2}>
+                  <Button
+                    variant="contained"
+                    size="small"
+                    onClick={() => navigate(`/book-appointment?doctorId=${doc._id}`)}
+                  >
+                    Book Appointment
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    onClick={() => navigate(`/doctors/${doc._id}`)}
+                  >
+                    View Profile
+                  </Button>
+                </Box>
+                {/*Buttons end here */}
               </CardContent>
             </Card>
           </Grid>

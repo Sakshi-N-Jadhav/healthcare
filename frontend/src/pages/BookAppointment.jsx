@@ -2,11 +2,23 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { TextField, Button, Container, MenuItem, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
+
 
 function BookAppointment() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const preselectedDoctor = queryParams.get("doctorId");
+
   const [doctors, setDoctors] = useState([]);
-  const [form, setForm] = useState({ doctorId: "", date: "" });
+  const [form, setForm] = useState({
+    doctorId: preselectedDoctor || "",
+    date: "",
+  });
+  
   const navigate = useNavigate();
+  
 
   const user = JSON.parse(localStorage.getItem("user"));
 
