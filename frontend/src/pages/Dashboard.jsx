@@ -1,95 +1,56 @@
 import { useEffect, useState } from "react";
-import { Container, Typography, Button, List, ListItem, ListItemText } from "@mui/material";
 import axios from "axios";
+import { Container, Typography, Button, List, ListItem, ListItemText, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-  const [user, setUser] = useState(null);
   const [appointments, setAppointments] = useState([]);
+  const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
 
-  // Fetch user details & appointments
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const token = localStorage.getItem("token");
-
-        // Fetch user details
-        const userResponse = await axios.get("http://localhost:5000/api/user", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setUser(userResponse.data);
-
-        // Fetch user-specific appointments
-        const appointmentsResponse = await axios.get("http://localhost:5000/api/appointments/my-appointments", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setAppointments(appointmentsResponse.data);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Logout function
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
-  // Function for doctors to approve/reject appointments
-  const handleUpdateStatus = async (id, status) => {
-    try {
-      const token = localStorage.getItem("token");
-      await axios.put(
-        `http://localhost:5000/api/appointments/update-status/${id}`,
-        { status },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      alert("Appointment updated!");
-      window.location.reload();
-    } catch (error) {
-      alert("Error updating appointment");
+    if (!user) {
+      navigate("/login");
+      return;
     }
-  };
+
+    axios.get(`http://localhost:5000/api/users/appointments/${user.id}`)
+      .then((res) => setAppointments(res.data))
+      .catch((err) => console.error("Error loading appointments:", err));
+  }, [user, navigate]);
 
   return (
-    <Container>
-      <Typography variant="h4">Welcome to the Dashboard</Typography>
-      <Button variant="contained" color="primary" onClick={() => navigate("/book-appointment")}>
-        Book Appointment
+    <Container maxWidth="md" style={{ marginTop: 40 }}>
+      <Typography variant="h4" gutterBottom>Welcome, {user?.name}</Typography>
+      <Typography variant="subtitle1" gutterBottom>Email: {user?.email}</Typography>
+      <Typography variant="subtitle1" gutterBottom>Role: {user?.role}</Typography>
+
+      <Divider sx={{ my: 4 }} />
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => navigate("/book-appointment")}
+        sx={{ mb: 4 }}
+      >
+        Book an Appointment
       </Button>
-      {user && (
-        <>
-          <Typography variant="h6">Welcome, {user.name} ({user.role})</Typography>
-          <Typography variant="body1">Email: {user.email}</Typography>
-        </>
-      )}
 
-      <Typography variant="h5">Appointments</Typography>
+      <Typography variant="h5" gutterBottom>Your Appointments</Typography>
       <List>
-        {appointments.map((appt) => (
-          <ListItem key={appt._id}>
-            <ListItemText 
-              primary={
-                user.role === "patient"
-                  ? `Doctor: ${appt.doctorId.name} | Date: ${new Date(appt.date).toLocaleString()}`
-                  : `Patient: ${appt.patientId.name} | Date: ${new Date(appt.date).toLocaleString()} | Status: ${appt.status}`
-              }
-            />
-            {user.role === "doctor" && appt.status === "Pending" && (
-              <>
-                <Button onClick={() => handleUpdateStatus(appt._id, "Confirmed")} color="primary">Approve</Button>
-                <Button onClick={() => handleUpdateStatus(appt._id, "Cancelled")} color="secondary">Reject</Button>
-              </>
-            )}
-          </ListItem>
-        ))}
-      </List>
-
-      <Button onClick={handleLogout} variant="contained" color="secondary">Logout</Button>
+  {appointments.length > 0 ? (
+    appointments.map((appt) => (
+      <ListItem key={appt._id}>
+        <ListItemText
+          primary={`Appointment with ${appt.doctorId.name} on ${new Date(appt.date).toLocaleString()}`}
+          secondary={`Status: ${appt.status}`}
+        />
+      </ListItem>
+    ))
+  ) : (
+    <Typography>No appointments yet.</Typography>
+  )}
+</List>
     </Container>
   );
 }
