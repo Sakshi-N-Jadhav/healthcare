@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import BookAppointment from "./pages/BookAppointment";
 import ProtectedRoute from "./components/ProtectedRoute";
+import DoctorDirectory from "./pages/DoctorDirectory";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/doctors" element={<DoctorDirectory />} />
         {/* // Protected Route for Dashboard */}
         <Route element={<ProtectedRoute />}>
          {/* Now, if a user is not logged in, they will be redirected to /login when they try to access /dashboard. */}

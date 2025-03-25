@@ -8,13 +8,13 @@ const router = express.Router();
 
 // Get all doctors
 router.get("/doctors", async (req, res) => {
-    try {
-      const doctors = await User.find({ role: "doctor" }).select("name email");
-      res.json(doctors);
-    } catch (error) {
-      res.status(500).send("Server error");
-    }
-  });
+  try {
+    const doctors = await User.find({ role: "doctor" }).select("name email specialization experience");
+    res.json(doctors);
+  } catch (err) {
+    res.status(500).send("Failed to fetch doctors");
+  }
+});
   
 // Get appointments by patient ID
 router.get("/appointments/:patientId", async (req, res) => {
@@ -32,6 +32,7 @@ router.get("/appointments/:patientId", async (req, res) => {
     res.status(500).send("Error fetching appointments");
   }
 });
+
 
 
 

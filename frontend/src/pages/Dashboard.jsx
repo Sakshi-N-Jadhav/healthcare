@@ -75,6 +75,15 @@ function Dashboard() {
         <Button variant="contained" color="primary" onClick={() => navigate("/book-appointment")}>
           Book Appointment
         </Button>
+        <Button
+  variant="outlined"
+  color="secondary"
+  onClick={() => navigate("/doctors")}
+  sx={{ ml: 2 }}
+>
+  View Doctors
+</Button>
+
       </Box>
 
       <List>
