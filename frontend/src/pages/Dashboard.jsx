@@ -67,6 +67,23 @@ function Dashboard() {
       <Typography variant="subtitle1" gutterBottom>
         Role: {user?.role}
       </Typography>
+      {/* adding profile info section */}
+      <Typography variant="subtitle1">
+        Location: {user?.location || "Not provided"} </Typography>
+      <Typography variant="subtitle1">
+      Sex: {user?.sex || "Not specified"} </Typography>
+      <Typography variant="subtitle1">
+      Date of Birth: {user?.dob ? new Date(user.dob).toLocaleDateString() : "Not set"}
+      </Typography>
+
+      
+      <Button
+      variant="outlined"
+      size="small"
+      sx={{ mb: 3 }}
+      onClick={() => navigate("/my-profile")}>
+        My Profile
+      </Button>
 
       <Divider sx={{ my: 3 }} />
 
@@ -83,6 +100,14 @@ function Dashboard() {
 >
   View Doctors
 </Button>
+{/* <Button
+  variant="outlined"
+  color="success"
+  onClick={() => navigate("/my-profile")}
+>
+  My Profile
+</Button> */}
+
 
       </Box>
 

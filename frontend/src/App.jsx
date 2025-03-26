@@ -7,6 +7,9 @@ import Navbar from "./components/Navbar";
 import BookAppointment from "./pages/BookAppointment";
 import ProtectedRoute from "./components/ProtectedRoute";
 import DoctorDirectory from "./pages/DoctorDirectory";
+import DoctorProfile from "./pages/DoctorProfile";
+import MyProfile from "./pages/MyProfile";
+
 
 
 function App() {
@@ -24,6 +27,8 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/book-appointment" element={<BookAppointment />} />
+        <Route path="/doctors/:id" element={<DoctorProfile />} />
+        <Route path="/my-profile" element={<MyProfile />} /> {/* //patient updates his profile */}
 
         </Route>
       </Routes>

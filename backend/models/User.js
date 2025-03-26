@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
 
+
   role: {
     type: String,
     enum: ["patient", "doctor"],
@@ -33,6 +34,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
+    // fields for patients
+    dob: {
+      type: Date,
+    },
+    sex: {
+      type: String,
+      enum: ["Male", "Female", "Other", ""], // "" allows unset
+      default: "",
+    },
+    location: {
+      type: String,
+      default: "",
+    }
+  
 });
 
 module.exports = mongoose.model("User", userSchema);

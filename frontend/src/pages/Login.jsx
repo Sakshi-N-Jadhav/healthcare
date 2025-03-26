@@ -16,8 +16,13 @@ function Login() {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", form);
 
-      // ✅ Store user data in localStorage
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+       // Store essential user data in localStorage
+      localStorage.setItem("user", JSON.stringify({
+      id: res.data.user.id, //store it as id
+      name: res.data.user.name,
+      email: res.data.user.email,
+      role: res.data.user.role
+    }));
 
       alert("Login successful!");
       
