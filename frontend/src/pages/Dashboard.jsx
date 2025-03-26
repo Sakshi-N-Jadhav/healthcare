@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import LogoutButton from "../components/LogoutButton";
 
 function Dashboard() {
   const [appointments, setAppointments] = useState([]);
@@ -59,6 +60,7 @@ function Dashboard() {
   };
 
   return (
+    
     <Container maxWidth="md" sx={{ mt: 5 }}>
       <Typography variant="h4" gutterBottom>
         Welcome, {user?.name}
@@ -76,7 +78,10 @@ function Dashboard() {
       Date of Birth: {user?.dob ? new Date(user.dob).toLocaleDateString() : "Not set"}
       </Typography>
 
-      
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Typography variant="h4">Welcome to Dashboard</Typography>
+        <LogoutButton />
+      </Box>
       <Button
       variant="outlined"
       size="small"
@@ -163,8 +168,12 @@ function Dashboard() {
           <Typography>No upcoming appointments.</Typography>
         )}
       </List>
+      
+    
     </Container>
+    
   );
 }
+
 
 export default Dashboard;
