@@ -20,18 +20,33 @@ function Dashboard() {
   const [newDate, setNewDate] = useState("");
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
+ 
 
   useEffect(() => {
-    if (!user) {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (!storedUser) {
       navigate("/login");
       return;
     }
-
+  
     axios
-      .get(`http://localhost:5000/api/users/appointments/${user.id}`)
+      .get(`http://localhost:5000/api/users/appointments/${storedUser.id}`)
       .then((res) => setAppointments(res.data))
       .catch((err) => console.error("Error fetching appointments", err));
-  }, [user, navigate]);
+  }, []); // ✅ only runs on initial mount
+  
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     navigate("/login");
+  //     return;
+  //   }
+
+  //   axios
+  //     .get(`http://localhost:5000/api/users/appointments/${user.id}`)
+  //     .then((res) => setAppointments(res.data))
+  //     .catch((err) => console.error("Error fetching appointments", err));
+  // }, [user, navigate]);
 
   const handleCancel = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this appointment?")) return;
