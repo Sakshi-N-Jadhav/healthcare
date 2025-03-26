@@ -22,7 +22,7 @@ function MyProfile() {
     password: "", // for changing password
   });
 
-  // ✅ Load user profile on mount
+  // Load user profile on mount
   useEffect(() => {
     if (!user) {
       navigate("/login");
@@ -45,23 +45,27 @@ function MyProfile() {
       .catch(() => alert("Unable to load profile"));
   }, [user, navigate]);
 
-  // ✅ Handle input field changes
+  // Handle input field changes
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ Save profile changes
+  // Save profile changes
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
-        `http://localhost:5000/api/users/profile/${user.id}`,
-        form
-      );
+      // Clean the form before sending (avoids sending _id or other unwanted fields)
+const { name, email, dob, sex, location, password } = form;
+
+const response = await axios.put(
+  `http://localhost:5000/api/users/profile/${user.id}`,
+  { name, email, dob, sex, location, password }
+);
+
 
       const updatedUser = response.data.user;
 
-      // ✅ Update localStorage with latest info
+      //  Update localStorage with latest info
       localStorage.setItem(
         "user",
         JSON.stringify({

@@ -78,6 +78,16 @@ router.get("/profile/:id", async (req, res) => {
 router.put("/profile/:id", async (req, res) => {
   try {
     const { name, email, dob, sex, location, password } = req.body;
+
+    // ✅ Verify the ID in the URL matches the one in localStorage (sent by frontend)
+    const userId = req.params.id;
+
+    // Optional: Prevent updating _id field
+    if (req.body._id && req.body._id !== userId) {
+      return res.status(403).json({ msg: "Unauthorized profile update" });
+    }
+
+    // Prepare update fields
     const updates = { name, email, dob, sex, location };
 
     if (password) {
@@ -86,7 +96,7 @@ router.put("/profile/:id", async (req, res) => {
     }
 
     const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
+      userId,
       updates,
       { new: true }
     ).select("-password");
@@ -97,6 +107,7 @@ router.put("/profile/:id", async (req, res) => {
     res.status(500).send("Profile update failed");
   }
 });
+
 
 
 module.exports = router;

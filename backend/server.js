@@ -34,25 +34,25 @@ app.get("/", (req, res) => {
 });
 
 // Protected Route: Only accessible if logged in
-app.get("/api/profile", authMiddleware, (req, res) => {
-    res.json({
-      msg: "Welcome to your profile",
-      user: req.user, // Contains userId and role from the token
-    });
-  });
+// app.get("/api/profile", authMiddleware, (req, res) => {
+//     res.json({
+//       msg: "Welcome to your profile",
+//       user: req.user, // Contains userId and role from the token
+//     });
+//   });
   
   //The frontend can fetch user details from /api/user.
-  app.get("/api/user", authMiddleware, async (req, res) => {
-    try {
-      const user = await User.findById(req.user.userId).select("-password");
-      res.json(user);
-    } catch (error) {
-      res.status(500).send("Server error");
-    }
-  });
+  // app.get("/api/user", authMiddleware, async (req, res) => {
+  //   try {
+  //     const user = await User.findById(req.user.userId).select("-password");
+  //     res.json(user);
+  //   } catch (error) {
+  //     res.status(500).send("Server error");
+  //   }
+  // });
 
 
 
 // Start Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
