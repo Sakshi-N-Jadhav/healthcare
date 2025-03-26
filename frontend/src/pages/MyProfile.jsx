@@ -50,41 +50,36 @@ function MyProfile() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Save profile changes
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      // Clean the form before sending (avoids sending _id or other unwanted fields)
-const { name, email, dob, sex, location, password } = form;
-
-const response = await axios.put(
-  `http://localhost:5000/api/users/profile/${user.id}`,
-  { name, email, dob, sex, location, password }
-);
-
-
-      const updatedUser = response.data.user;
-
-      //  Update localStorage with latest info
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          id: updatedUser._id,
-          name: updatedUser.name,
-          email: updatedUser.email,
-          role: updatedUser.role,
-          dob: updatedUser.dob,
-          sex: updatedUser.sex,
-          location: updatedUser.location,
-        })
+      const { name, email, dob, sex, location, password } = form;
+  
+      const response = await axios.put(
+        `http://localhost:5000/api/users/profile/${user.id}`,
+        { name, email, dob, sex, location, password }
       );
-
+  
+      const updatedUser = response.data.user;
+  
+      // ✅ Refresh localStorage with updated user info
+      localStorage.setItem("user", JSON.stringify({
+        id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        role: updatedUser.role,
+        dob: updatedUser.dob,
+        sex: updatedUser.sex,
+        location: updatedUser.location
+      }));
+  
       alert("Profile updated!");
     } catch (err) {
       console.error(err);
       alert("Failed to update profile");
     }
   };
+  
 
   return (
     <Container maxWidth="sm" sx={{ mt: 5 }}>
