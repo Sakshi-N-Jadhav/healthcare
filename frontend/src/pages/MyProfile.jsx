@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
+
+
 function MyProfile() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +22,45 @@ function MyProfile() {
   const [dob, setDOB] = useState("");
   const [sex, setSex] = useState("");
   const [location, setLocation] = useState("");
+  // State for health problem notes
+  const [note, setNote] = useState("");
+  const [notes, setNotes] = useState([]);
+  const addNote = async () => {
+    try {
+      await axios.post(`http://localhost:5000/api/users/profile/${user.id}/notes`, { note });
+      setNotes([...notes, note]);
+      setNote("");
+    } catch (err) {
+      alert("Error adding note");
+    }
+  };
+  
+  const fetchNotes = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/api/users/profile/${user.id}/notes`);
+      setNotes(res.data);
+    } catch (err) {
+      alert("Error loading notes");
+    }
+  };
+  
+  const deleteNote = async (index) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/users/profile/${user.id}/notes/${index}`);
+      const updatedNotes = [...notes];
+      updatedNotes.splice(index, 1);
+      setNotes(updatedNotes);
+    } catch (err) {
+      alert("Error deleting note");
+    }
+  };
+  
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+  
 
+  
   // Fetch user profile on first load
   useEffect(() => {
     if (user && user.id) {
@@ -229,6 +269,31 @@ function MyProfile() {
           </Button>
         </Box>
       </form>
+      {/*  Health Problem Notes Section */}
+      <Typography variant="h5" sx={{ mt: 4 }}>
+      Health Problem Notes
+    </Typography>
+    <TextField
+      label="Add Health Problem"
+      fullWidth
+      value={note}
+      onChange={(e) => setNote(e.target.value)}
+      margin="normal"
+    />
+    <Button variant="contained" color="primary" onClick={addNote}>
+      Add Note
+    </Button>
+
+    <List>
+      {notes.map((item, index) => (
+        <ListItem key={index}>
+          {item}
+          <IconButton onClick={() => deleteNote(index)}>
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+      ))}
+    </List>
     </Container>
   );
 }

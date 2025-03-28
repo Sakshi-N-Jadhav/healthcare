@@ -11,12 +11,13 @@ function BookAppointment() {
   const queryParams = new URLSearchParams(location.search);
   const preselectedDoctor = queryParams.get("doctorId");
 
+
   const [doctors, setDoctors] = useState([]);
   const [form, setForm] = useState({
     doctorId: preselectedDoctor || "",
     date: "",
   });
-  
+  const [notes, setNotes] = useState("");  
   const navigate = useNavigate();
   
 
@@ -40,6 +41,7 @@ function BookAppointment() {
         patientId: user.id,
         doctorId: form.doctorId,
         date: form.date,
+        notes: form.setNotes
       });
 
       alert("Appointment booked!");
@@ -78,6 +80,15 @@ function BookAppointment() {
           value={form.date}
           onChange={handleChange}
           required
+        />
+        <TextField
+          fullWidth
+          label="Health Problem Notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          margin="normal"
+          multiline
+          rows={4}  // Multi-line for detailed notes
         />
 
         <Button type="submit" variant="contained" color="primary" fullWidth>

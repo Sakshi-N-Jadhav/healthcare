@@ -16,10 +16,10 @@ router.get("/doctors", async (req, res) => {
 
 //  Book appointment
 router.post("/book", async (req, res) => {
-  const { patientId, doctorId, date } = req.body;
+  const { patientId, doctorId, date,notes} = req.body;
 
   try {
-    const appointment = new Appointment({ patientId, doctorId, date });
+    const appointment = new Appointment({ patientId, doctorId, date, notes});
     await appointment.save();
     res.status(201).json({ msg: "Appointment booked!", appointment });
   } catch (error) {

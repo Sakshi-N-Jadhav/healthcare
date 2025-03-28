@@ -110,6 +110,48 @@ router.put("/profile/:id", async (req, res) => {
 
 
 
+// Add a new health problem note
+router.post("/profile/:id/notes", async (req, res) => {
+  try {
+    const { note } = req.body;
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    user.healthNotes.push(note); // Add the new note
+    await user.save();
+    res.json({ msg: "Note added successfully", notes: user.healthNotes });
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
+
+// Get all health problem notes
+router.get("/profile/:id/notes", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+    res.json(user.healthNotes);
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
+
+// Delete a specific note
+router.delete("/profile/:id/notes/:noteIndex", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    user.healthNotes.splice(req.params.noteIndex, 1); // Remove the note
+    await user.save();
+    res.json({ msg: "Note deleted", notes: user.healthNotes });
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
+
+
+
 module.exports = router;
 
 

@@ -135,10 +135,17 @@ function Dashboard() {
         {appointments.length > 0 ? (
           appointments.map((appt) => (
             <ListItem key={appt._id} divider>
-              <ListItemText
-                primary={`Appointment with ${appt.doctorId.name} on ${new Date(appt.date).toLocaleString()}`}
-                secondary={`Status: ${appt.status}`}
-              />
+            <ListItemText
+  primary={`Appointment with ${appt.doctorId.name} on ${new Date(appt.date).toLocaleString()}`}
+  secondary={
+    <>
+      <Typography variant="body2">Status: {appt.status}</Typography>
+      <Typography variant="body2">Health Problem Notes: {appt.notes || "No notes provided"}</Typography>
+    </>
+  }
+/>
+
+        
               <Button
                 size="small"
                 color="error"
