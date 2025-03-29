@@ -1,19 +1,65 @@
-import { Button, Container, Typography, Stack } from "@mui/material";
+import React from "react";
+import { AppBar, Toolbar, Box, Typography, Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function Home() {
-  return (
-    <Container maxWidth="sm" style={{ marginTop: 80, textAlign: "center" }}>
-      <Typography variant="h4" gutterBottom>Welcome to the Healthcare App</Typography>
-      <Typography variant="body1" gutterBottom>
-        New here? Sign up. Already have an account? Log in!
-      </Typography>
-      <Stack direction="row" spacing={2} justifyContent="center" mt={4}>
-        <Button variant="contained" color="primary" component={Link} to="/login">Login</Button>
-        <Button variant="outlined" component={Link} to="/register">Register</Button>
+const Navbar = () => (
+  <AppBar position="static" style={{ backgroundColor: "#004e7c" }}>
+    <Toolbar>
+      <Typography variant="h6" style={{ flexGrow: 1 }}>Healthcare Portal</Typography>
+      <Stack direction="row" spacing={4}>
+        <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>Home</Link>
+        <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>About Us</Link>
+        <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>Services</Link>
+        <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>Contact</Link>
+        <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>Login</Link>
       </Stack>
-    </Container>
-  );
-}
+    </Toolbar>
+  </AppBar>
+);
+
+const HeroSection = () => (
+  <Box
+    sx={{
+      display: "flex",
+      height: "calc(100vh - 64px)",
+    }}
+  >
+    {/* Left Side Background Image */}
+    <Box
+      sx={{
+        backgroundImage: "url('/public/doctors-image.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        width: "73%",
+        height: "100%",
+      }}
+    />
+
+    {/* Right Side Welcome Text */}
+    <Box
+      sx={{
+        width: "35%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        padding: "20px",
+      }}
+    >
+      <Typography variant="h3" gutterBottom>Welcome to the Healthcare Portal</Typography>
+      <Typography variant="body1" gutterBottom>Your trusted healthcare companion.</Typography>
+      <Button variant="contained" style={{ backgroundColor: "#0097a7", color: "#fff", marginTop: "10px" }}>Learn More</Button>
+    </Box>
+  </Box>
+);
+
+const Home = () => (
+  <>
+    <Navbar />
+    <HeroSection />
+  </>
+);
 
 export default Home;
