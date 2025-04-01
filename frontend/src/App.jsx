@@ -30,6 +30,7 @@ function App() {
         <Route path="/book-appointment" element={<BookAppointment />} />
         <Route path="/doctors/:id" element={<DoctorProfile />} />
         <Route path="/my-profile" element={<MyProfile />} /> {/* //patient updates his profile */}
+        
        
 
         </Route>
