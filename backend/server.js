@@ -15,6 +15,11 @@ connectDB();
 app.use(express.json()); // Enables JSON parsing
 app.use(cors()); // Enables cross-origin requests
 
+
+// Start Server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+
 //  Register Authentication Routes Here
 app.use("/api/auth", require("./routes/authRoutes"));
 
@@ -23,6 +28,9 @@ app.use("/api/appointments", require("./routes/appointmentRoutes"));
 
 //the doctors list is accessible in the backend!
 app.use("/api/users", require("./routes/userRoutes"));
+
+app.use("/api/mediGenie", require("./routes/mediGenie"));
+
 
 
 
@@ -54,6 +62,15 @@ app.get("/", (req, res) => {
 
 
 
-// Start Server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+

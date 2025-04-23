@@ -1,0 +1,180 @@
+
+.mycontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set to full viewport height */
+    overflow-y: auto; /* Enable scrolling if content is too large */
+    position: relative;
+}
+
+.main_data {
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.header_sep {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_sep h1 {
+    color: #6d8f85;
+}
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+/* Upload Box */
+.uploadContainer {
+    border: 2px dashed #6d8f85;
+    padding: 30px;
+    text-align: center;
+    width: 200%;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Hidden file input */
+.hiddenInput {
+    display: none;
+}
+
+/* Upload Button */
+.uploadButton {
+    padding: 10px 20px;
+    background: #6d8f85;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.uploadButton:hover {
+    background: #5a7c73;
+    transform: scale(1.05);
+}
+
+.uploadButton:active {
+    transform: scale(0.95);
+}
+
+/* File Display Container */
+.fileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Selected File Name */
+.fileName {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Remove Icon (Cross) */
+.removeIcon {
+    color: red;
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s ease;
+}
+
+.removeIcon:hover {
+    transform: scale(1.2);
+}
+
+/* Processing UI */
+.processingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap:5px;
+    padding: 20px;
+}
+
+.processingText {
+    font-size: 24px;
+    font-weight: bold;
+    /* margin-bottom: 10px; */
+}
+
+.fileBox {
+    display: inline-block;
+    padding: 8px 32px;
+    background: #f3f3f3;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 55px;
+}
+
+/* Progress Bar */
+.progressBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 150%;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 13px;
+    /* margin: 10px auto; */
+}
+
+.progressBar {
+    height: 100%;
+    background: #6d8f85;
+    transition: width 0.5s ease-in-out;
+}
+
+.progressText {
+    font-size: 13px;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.processingSubText {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.waitText {
+    font-size: 14px;
+    color: gray;
+    margin-top: 5px;
+}
+
+
+
+
+
+.image_section {
+    position: fixed;
+    right: 20px; /* Small padding from the right */
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  
+  .image_section img {
+    max-height: 55vh; /* Increased height for better visibility */
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 10px; /* Slight padding from the bottom */
+  }
+  

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => (
   <AppBar position="static" style={{ backgroundColor: "#004e7c" }}>
     <Toolbar>
-      <Typography variant="h6" style={{ flexGrow: 1 }}>Healthcare Portal</Typography>
+      <Typography variant="h6" style={{ flexGrow: 1 }}>IntelliCare</Typography>
       <Stack direction="row" spacing={4}>
         <Link to="/" style={{ color: "#fff", textDecoration: "none" }}>Home</Link>
         <Link to="#" style={{ color: "#fff", textDecoration: "none" }}>About Us</Link>

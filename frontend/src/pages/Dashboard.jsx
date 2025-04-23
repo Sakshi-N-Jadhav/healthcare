@@ -103,6 +103,7 @@ function Dashboard() {
             Welcome to Your Health Dashboard
           </Typography>
         </Toolbar>
+        
       </AppBar>
 
       {/* Side Drawer */}
@@ -124,7 +125,9 @@ function Dashboard() {
         <Button fullWidth sx={{ mb: 1 }} onClick={() => navigate("/edit-appointments")}>Edit Appointments</Button>
         <Button fullWidth sx={{ mb: 1 }} onClick={() => navigate("/doctors")}>View Doctors</Button>
         <Button fullWidth sx={{ mb: 2 }} onClick={() => navigate("/book-appointment")}>Book Appointment</Button>
+        <Button fullWidth sx={{ mb: 1 }} onClick={() => navigate("/medigenie")}>Medigen</Button>
         <Button fullWidth sx={{ mb: 1 }} onClick={() => navigate("/charts")}>Charts</Button>
+
 
         <LogoutButton />
       </Drawer>

@@ -10,6 +10,8 @@ import DoctorDirectory from "./pages/DoctorDirectory";
 import DoctorProfile from "./pages/DoctorProfile";
 import MyProfile from "./pages/MyProfile";
 import Charts from "./pages/Charts";
+import Medigenie from "./pages/Medigenie";
+
 
 
 
@@ -32,8 +34,11 @@ function App() {
         <Route path="/my-profile" element={<MyProfile />} /> {/* //patient updates his profile */}
         <Route element={<ProtectedRoute />}>
         <Route path="/charts" element={<Charts />} /></Route>
+        <Route path="/medigenie" element={<Medigenie />} /></Route>
+       
 
-        </Route>
+
+      
       </Routes>
     </Router>
   );
