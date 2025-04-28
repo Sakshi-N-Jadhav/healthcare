@@ -92,6 +92,15 @@ npm run dev
 ```
 ---
 
+## 📈 Future Enhancements
+
+- Voice-based report summaries (Text-to-Speech)
+- SMS/email appointment reminders
+- Doctor-patient chat feature
+- Admin analytics dashboard
+
+---
+
 ## 📷 Output Screenshots
 
 - Home Page
@@ -123,16 +132,6 @@ npm run dev
 
 - Medical Report + AI Summary (Translated to Spanish)
 ![Screenshot 2025-04-23 093852](https://github.com/user-attachments/assets/738ac01a-c4c4-4cc1-9420-9d132e08a892)
-
-
----
-
-## 📈 Future Enhancements
-
-- Voice-based report summaries (Text-to-Speech)
-- SMS/email appointment reminders
-- Doctor-patient chat feature
-- Admin analytics dashboard
 
 ---
 
