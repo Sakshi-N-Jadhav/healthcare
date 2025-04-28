@@ -79,9 +79,9 @@ React with Vite provides fast, modular frontend development while Node.js and Ex
 ### Backend
 ```bash
 cd backend
-npm install
 create .env file with OPENAI_API_KEY, MONGO_URI
-npm start
+To start the backend server:
+node server.js 
 ```
 
 ### Frontend
@@ -99,17 +99,6 @@ npm run dev
 - SMS/email appointment reminders
 - Doctor-patient chat feature
 - Admin analytics dashboard
-
----
-
-## 👨‍💻 Developed By
-
-**Sakshi Narayan Jadhav**  
-M.S. Software Engineering, Rochester Institute of Technology
-
-- 📧 Email: sj9017@g.rit.edu
-- 🔗 LinkedIn: [linkedin.com/in/sakshijadhav28](https://linkedin.com/in/sakshijadhav28)
-- 💻 GitHub: [github.com/Sakshi-N-Jadhav](https://github.com/Sakshi-N-Jadhav)
 
 ---
 
