@@ -30,7 +30,7 @@
 | Database      | MongoDB with Mongoose |
 | AI & OCR      | Tesseract.js, pdf-parse, OpenAI GPT-4o |
 | Utilities     | html2canvas, jsPDF, xlsx, Chart.js |
-| Security      | bcryptjs, CORS (No JWT) |
+| Security      | bcryptjs, CORS |
 
 ---
 
@@ -90,6 +90,25 @@ cd frontend
 npm install
 npm run dev
 ```
+---
+
+## 📷 Output Screenshots
+
+- Upload Medical Report Interface
+
+- Processing Report (Progress Bar)
+
+- Book Appointment Page
+
+- Patient Dashboard Overview
+
+- Upcoming Appointments List
+
+- Rescheduling Appointments
+
+- Medical Report + AI Summary (English)
+
+- Medical Report + AI Summary (Translated to Spanish)
 
 ---
 
