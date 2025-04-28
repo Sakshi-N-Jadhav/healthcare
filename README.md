@@ -102,35 +102,34 @@ npm run dev
 ---
 
 ## 📷 Output Screenshots
-
-- Home Page
+## 🏠 Home Page
 ![Screenshot 2025-04-23 091513](https://github.com/user-attachments/assets/473a9cfd-7e6f-4a81-8faf-d878d95d6375)
 
-- Login and SignUp Page
+## 🔑 Login and SignUp Page
 ![Screenshot 2025-04-23 091945](https://github.com/user-attachments/assets/0287c2b9-d13b-44e6-967f-c423304e1404)
 
-- Doctor Directory Page
+## 🩺 Doctor Directory Page
 ![Screenshot 2025-04-23 092328](https://github.com/user-attachments/assets/8ff60cb4-b657-4063-b364-7e6a1586f8d5)
 
-- Book Appointment Page
+## 📅 Book Appointment Page
 ![Screenshot 2025-04-23 092040](https://github.com/user-attachments/assets/a31087d2-5295-4cc3-96c4-c6e91dc6fbb4)
 
-- Patient Dashboard Overview
+## 🧑‍⚕️ Patient Dashboard Overview
 ![Screenshot 2025-04-23 092132](https://github.com/user-attachments/assets/28182d54-3cea-41e5-89d3-cb718688aff5)
 
-- Upcoming Appointments List
+## 📋 Upcoming Appointments List
 ![Screenshot 2025-04-23 092212](https://github.com/user-attachments/assets/7ea6adc3-fafc-46f7-90db-2dbf364084d7)
 
-- Rescheduling Appointments
+## 🔄 Rescheduling Appointments
 ![Screenshot 2025-04-23 092301](https://github.com/user-attachments/assets/6b3afa16-7d5c-4a96-a469-d2526c28dd75)
 
-- Upload Medical Report Interface
+## 📤 Upload Medical Report Interface
 ![Screenshot 2025-04-23 092409](https://github.com/user-attachments/assets/50946aff-f22b-453c-8c21-cd8c9f55a8d3)
 
-- Medical Report + AI Summary (English)
+## 📄 Medical Report + AI Summary (English)
 ![Screenshot 2025-04-23 092841](https://github.com/user-attachments/assets/a61ea9e4-5d24-4e16-a7a7-74c3b4790584)
 
-- Medical Report + AI Summary (Translated to Spanish)
+## 🌎 Medical Report + AI Summary (Translated to Spanish)
 ![Screenshot 2025-04-23 093852](https://github.com/user-attachments/assets/738ac01a-c4c4-4cc1-9420-9d132e08a892)
 
 ---
