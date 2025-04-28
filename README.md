@@ -126,7 +126,7 @@ npm run dev
 ## 📤 Upload Medical Report Interface
 ![Screenshot 2025-04-23 092409](https://github.com/user-attachments/assets/50946aff-f22b-453c-8c21-cd8c9f55a8d3)
 
-## 📄 Medical Report + AI Summary (English)
+## 📄 Medical Report + AI Summary
 ![Screenshot 2025-04-23 092841](https://github.com/user-attachments/assets/a61ea9e4-5d24-4e16-a7a7-74c3b4790584)
 
 ## 🌎 Medical Report + AI Summary (Translated to Spanish)
